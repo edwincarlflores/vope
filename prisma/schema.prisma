@@ -3,13 +3,47 @@
 
 generator client {
     provider = "prisma-client-js"
+    previewFeatures = ["referentialIntegrity"]
 }
 
 datasource db {
-    provider = "sqlite"
-    url      = env("DATABASE_URL")
+  provider             = "postgresql"
+  url                  = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
 }
 
-model Example {
-    id String @id @default(cuid())
+model Topic {
+  id         String   @id @unique @default(cuid())
+  createdAt  DateTime @default(now())
+  title      String   @db.VarChar(255)
+  ownerToken String   @db.VarChar(255)
+  items      Item[]
+
+  @@index([ownerToken])
+}
+
+model Item {
+  id        String   @id @unique @default(cuid())
+  createdAt DateTime @default(now())
+  topic     Topic    @relation(fields: [topicId], references: [id])
+  topicId   String
+  name      String   @db.VarChar(255)
+  image     String?
+  url       String?
+  Vote      Vote[]
+
+  @@index([topicId])
+}
+
+model Vote {
+  id         String   @id @unique @default(cuid())
+  createdAt  DateTime @default(now())
+  voterToken String   @db.VarChar(255)
+  item       Item     @relation(fields: [itemId], references: [id])
+  itemId     String
+  dope       Boolean
+
+  @@unique([voterToken, itemId])
+  @@index([voterToken])
+  @@index([itemId])
 }
