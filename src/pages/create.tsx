@@ -14,7 +14,7 @@ const CreatePage = () => {
     },
   });
   return (
-    <Layout title="Creaste a Topic">
+    <Layout title="Create a Topic">
       <input
         ref={inputRef}
         type="text"
