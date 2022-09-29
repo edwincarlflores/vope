@@ -43,9 +43,13 @@ const CreateItemsPage = () => {
   return (
     <Layout title="Add Items">
       <>
-        {items?.map(({ id, name }) => (
-          <ItemCard key={id} id={id} name={name} />
-        ))}
+        {items && items.length > 0 ? (
+          items?.map(({ id, name }) => (
+            <ItemCard key={id} id={id} name={name} />
+          ))
+        ) : (
+          <p>No items yet</p>
+        )}
         <div className="mt-4 pt-0">
           <ItemCreator topicId={topicId} />
         </div>
