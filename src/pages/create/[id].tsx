@@ -5,18 +5,23 @@ import { trpc } from "../../utils/trpc";
 const CreateItemsPage = () => {
   const router = useRouter();
   const {
-    query: { id },
+    query: { id: paramId },
   } = router;
 
-  if (!id || typeof id !== "string") {
+  const id = !paramId || typeof paramId !== "string" ? "" : paramId;
+
+  const { data, isLoading } = trpc.topics.topic.useQuery(
+    { id },
+    { enabled: !!id }
+  );
+
+  if (!id) {
     return (
       <Layout title="Error">
         <div>Invalid ID</div>
       </Layout>
     );
   }
-
-  const { data, isLoading } = trpc.topics.topic.useQuery({ id });
 
   if (isLoading) {
     return <Layout>Loading...</Layout>;
