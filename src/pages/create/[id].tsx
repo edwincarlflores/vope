@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { useRef } from "react";
 import Layout from "../../components/Layout";
 import { trpc } from "../../utils/trpc";
+import { urlQueryParamToString } from "../../utils/string";
 
 interface ItemCreatorProps {
   topicId: string;
@@ -14,11 +15,7 @@ interface ItemCardProps {
 
 const CreateItemsPage = () => {
   const router = useRouter();
-  const {
-    query: { id: paramId },
-  } = router;
-
-  const topicId = !paramId || typeof paramId !== "string" ? "" : paramId;
+  const topicId = urlQueryParamToString(router.query.id);
 
   const {
     data: topic,
