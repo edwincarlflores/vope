@@ -7,7 +7,7 @@ interface ItemCardProps {
   name: string;
 }
 
-const RankingsPage = () => {
+const RankingPage = () => {
   const router = useRouter();
   const topicId = urlQueryParamToString(router.query.id);
 
@@ -25,7 +25,7 @@ const RankingsPage = () => {
       loading={isLoading}
     >
       <>
-        <p className="pb-4 text-xl">Rankings</p>
+        <p className="pb-4 text-xl">Ranking</p>
         {topic?.items.map(({ id, name }) => (
           <ItemCard key={id} name={name} />
         ))}
@@ -47,4 +47,4 @@ const ItemCard = ({ name }: ItemCardProps) => {
   );
 };
 
-export default RankingsPage;
+export default RankingPage;

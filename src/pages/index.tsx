@@ -42,7 +42,7 @@ const TopicCard = ({ id, title, date }: TopicCardProps) => {
 
   return (
     <section
-      onClick={() => router.push(`/topic/${id}/rankings`)}
+      onClick={() => router.push(`/topic/${id}/ranking`)}
       className="flex cursor-pointer flex-col justify-center rounded border-2 border-gray-500 p-6 shadow-xl duration-500 motion-safe:hover:scale-105"
     >
       <h2 className="text-lg text-gray-700">{title}</h2>

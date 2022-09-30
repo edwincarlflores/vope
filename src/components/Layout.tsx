@@ -33,7 +33,7 @@ const Layout = ({
         <title>Vope</title>
         <meta
           name="description"
-          content="Vote nope or dope on different items under a specific topic then see the rankings per topic"
+          content="Vote nope or dope on different items under a specific topic then see the ranking per topic"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
