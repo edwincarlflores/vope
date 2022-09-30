@@ -13,9 +13,11 @@ const CreatePage = () => {
       router.push(`/create/${data.id}`);
     },
   });
+
   return (
     <Layout title="Create a Topic">
       <input
+        autoFocus
         ref={inputRef}
         type="text"
         disabled={isLoading}
@@ -28,7 +30,7 @@ const CreatePage = () => {
           }
         }}
         placeholder="Topic title"
-        className="relative w-full rounded border-2 border-gray-500 bg-white px-3 py-3 text-sm text-slate-600 placeholder-slate-400 shadow outline-none focus:outline-none focus:ring"
+        className="relative w-full rounded border-2 border-gray-500 bg-white p-3 text-xl text-slate-600 placeholder-slate-400 shadow outline-none focus:outline-none focus:ring"
       />
     </Layout>
   );

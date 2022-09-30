@@ -33,22 +33,16 @@ const CreateItemsPage = () => {
 
   return (
     <Layout
-      title="Add Items"
+      title={topic?.title}
       error={!topic?.id || isError}
       errorMessage="Invalid Topic ID"
       loading={isLoadingTopic}
     >
       <>
-        {items && items.length > 0 ? (
-          items?.map(({ id, name }) => (
-            <ItemCard key={id} id={id} name={name} />
-          ))
-        ) : (
-          <p>No items yet</p>
-        )}
-        <div className="mt-4 pt-0">
-          <ItemCreator topicId={topicId} />
-        </div>
+        {items?.map(({ id, name }) => (
+          <ItemCard key={id} id={id} name={name} />
+        ))}
+        <ItemCreator topicId={topicId} />
       </>
     </Layout>
   );
@@ -65,8 +59,13 @@ const ItemCreator = ({ topicId }: ItemCreatorProps) => {
     },
   });
 
+  if (inputRef?.current) {
+    inputRef.current.focus();
+  }
+
   return (
     <input
+      autoFocus
       ref={inputRef}
       type="text"
       disabled={isLoading}
@@ -78,16 +77,16 @@ const ItemCreator = ({ topicId }: ItemCreatorProps) => {
           });
         }
       }}
-      placeholder="Item Name"
-      className="relative w-full rounded border-2 border-gray-500 bg-white px-3 py-3 text-sm text-slate-600 placeholder-slate-400 shadow outline-none focus:outline-none focus:ring"
+      placeholder="Add item"
+      className="relative w-full rounded border-2 border-gray-500 bg-white p-2.5 text-xl text-slate-600 placeholder-slate-400 shadow outline-none focus:outline-none focus:ring"
     />
   );
 };
 
 const ItemCard = ({ id, name }: ItemCardProps) => {
   return (
-    <section className="flex flex-col justify-center rounded border-2 border-gray-500 p-6 shadow-xl duration-500 motion-safe:hover:scale-105">
-      <h2 className="text-lg text-gray-700">{name}</h2>
+    <section className="flex flex-col justify-center rounded border-2 border-gray-500 p-2.5 shadow-xl duration-500 motion-safe:hover:scale-105">
+      <h2 className="text-xl text-gray-700">{name}</h2>
     </section>
   );
 };
