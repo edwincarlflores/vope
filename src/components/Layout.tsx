@@ -69,12 +69,16 @@ const Content = ({
 }: ContentProps) => {
   if (error && !loading) {
     // TODO: Create an Error component and call it here
-    return <p>{errorMessage ? errorMessage : "Something went wrong."}</p>;
+    return (
+      <p className="text-lg">
+        {errorMessage ? errorMessage : "Something went wrong."}
+      </p>
+    );
   }
 
   if (loading) {
     // TODO: Create a Loader component and call it here
-    return <p>Loading...</p>;
+    return <p className="text-lg text-gray-400">Loading...</p>;
   }
 
   return <>{children}</>;
