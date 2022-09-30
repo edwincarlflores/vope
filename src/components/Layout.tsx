@@ -44,7 +44,7 @@ const Layout = ({
         >
           Vo<span className="text-purple-300">p</span>e
         </h1>
-        {title && <p className="mb-6 text-2xl text-gray-700">{title}</p>}
+        {title && <p className="mb-6 text-3xl text-gray-700">{title}</p>}
         <div className="font-mono">
           <Content
             error={error}
