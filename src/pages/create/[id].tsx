@@ -41,7 +41,10 @@ const CreateItemsPage = () => {
         ))}
         <ItemCreator topicId={topicId} />
         <div className="mt-4 pt-0">
-          <button className="relative w-full rounded-full bg-purple-300 py-2 px-4 font-bold text-white hover:bg-purple-500">
+          <button
+            disabled={items?.length === 0}
+            className="relative w-full rounded-full bg-purple-300 py-2 px-4 font-bold text-white hover:bg-purple-500 disabled:bg-purple-100"
+          >
             Create Topic
           </button>
         </div>
