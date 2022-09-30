@@ -12,6 +12,15 @@ export const itemsRouter = t.router({
         },
       });
     }),
+  delete: t.procedure
+    .input(z.object({ id: z.string() }))
+    .mutation(async ({ ctx, input }) => {
+      return await ctx.prisma.item.delete({
+        where: {
+          id: input.id,
+        },
+      });
+    }),
   itemsByTopicId: t.procedure
     .input(z.object({ topicId: z.string() }))
     .query(async ({ ctx, input }) => {
