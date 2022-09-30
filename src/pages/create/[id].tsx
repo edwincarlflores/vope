@@ -20,28 +20,24 @@ const CreateItemsPage = () => {
 
   const topicId = !paramId || typeof paramId !== "string" ? "" : paramId;
 
-  const { data: topic, isLoading: isLoadingTopic } = trpc.topics.topic.useQuery(
-    { id: topicId },
-    { enabled: !!topicId }
+  const {
+    data: topic,
+    isError,
+    isLoading: isLoadingTopic,
+  } = trpc.topics.topic.useQuery({ id: topicId }, { enabled: !!topicId });
+
+  const { data: items } = trpc.items.itemsByTopicId.useQuery(
+    { topicId },
+    { enabled: !!topic?.id }
   );
 
-  const { data: items, isLoading: itemsLoading } =
-    trpc.items.itemsByTopicId.useQuery({ topicId }, { enabled: !!topic?.id });
-
-  if (isLoadingTopic || itemsLoading) {
-    return <Layout>Loading...</Layout>;
-  }
-
-  if (!topic?.id) {
-    return (
-      <Layout title="Error">
-        <div>Invalid Topic ID</div>
-      </Layout>
-    );
-  }
-
   return (
-    <Layout title="Add Items">
+    <Layout
+      title="Add Items"
+      error={!topic?.id || isError}
+      errorMessage="Invalid Topic ID"
+      loading={isLoadingTopic}
+    >
       <>
         {items && items.length > 0 ? (
           items?.map(({ id, name }) => (

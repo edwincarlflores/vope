@@ -7,16 +7,8 @@ const Home: NextPage = () => {
   const router = useRouter();
   const { data: topics, isLoading } = trpc.topics.all.useQuery();
 
-  if (isLoading) {
-    return (
-      <Layout title="Topics">
-        <p>Loading...</p>
-      </Layout>
-    );
-  }
-
   return (
-    <Layout title="Topics">
+    <Layout title="Topics" loading={isLoading}>
       <>
         {topics?.map(({ id, title, createdAt }) => (
           <TopicCard

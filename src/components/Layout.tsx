@@ -2,12 +2,30 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import type { ReactNode } from "react";
 
+type ErrorTypes = "default" | "not-found";
+
 interface LayoutProps {
-  children: ReactNode;
+  children?: ReactNode;
+  error?: boolean;
+  errorType?: ErrorTypes;
+  errorMessage?: string;
+  loading?: boolean;
   title?: string;
 }
 
-const Layout = ({ children, title }: LayoutProps) => {
+type ContentProps = Pick<
+  LayoutProps,
+  "children" | "error" | "errorType" | "errorMessage" | "loading"
+>;
+
+const Layout = ({
+  children,
+  title,
+  error,
+  errorType,
+  errorMessage,
+  loading = false,
+}: LayoutProps) => {
   const router = useRouter();
   return (
     <>
@@ -27,10 +45,39 @@ const Layout = ({ children, title }: LayoutProps) => {
           Vo<span className="text-purple-300">p</span>e
         </h1>
         {title && <p className="mb-6 text-2xl text-gray-700">{title}</p>}
-        <div className="font-mono">{children}</div>
+        <div className="font-mono">
+          <Content
+            error={error}
+            errorType={errorType}
+            errorMessage={errorMessage}
+            loading={loading}
+          >
+            {children}
+          </Content>
+        </div>
       </main>
     </>
   );
+};
+
+const Content = ({
+  children,
+  error,
+  errorType,
+  errorMessage,
+  loading,
+}: ContentProps) => {
+  if (error && !loading) {
+    // TODO: Create an Error component and call it here
+    return <p>{errorMessage ? errorMessage : "Something went wrong."}</p>;
+  }
+
+  if (loading) {
+    // TODO: Create a Loader component and call it here
+    return <p>Loading...</p>;
+  }
+
+  return <>{children}</>;
 };
 
 export default Layout;
