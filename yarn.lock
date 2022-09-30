@@ -1638,6 +1638,11 @@ p-locate@^5.0.0:
   dependencies:
     p-limit "^3.0.2"
 
+p-sleep@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/p-sleep/-/p-sleep-1.1.0.tgz#a6c9333059b5103c3c0e46bcbba95a1f7969095b"
+  integrity sha512-bwP3GKZirBUYMtiUuBrheLUQdRXVeE/pmHOaLpNJzNfAD4b5AjDn6l823brXcQFade4G/g7GMNQ3KV86E8EaEw==
+
 parent-module@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/parent-module/-/parent-module-1.0.1.tgz#691d2709e78c79fae3a156622452d00762caaaa2"
@@ -1810,6 +1815,13 @@ react-ssr-prepass@^1.5.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/react-ssr-prepass/-/react-ssr-prepass-1.5.0.tgz#bc4ca7fcb52365e6aea11cc254a3d1bdcbd030c5"
   integrity sha512-yFNHrlVEReVYKsLI5lF05tZoHveA5pGzjFbFJY/3pOqqjGOmMmqx83N4hIjN2n6E1AOa+eQEUxs3CgRnPmT0RQ==
+
+react-tinder-card@^1.5.4:
+  version "1.5.4"
+  resolved "https://registry.yarnpkg.com/react-tinder-card/-/react-tinder-card-1.5.4.tgz#9367e443747a029241fdff49ca1f1a060d3c8bca"
+  integrity sha512-KRY9c5Wj118pMmkcjPI3KLkZVnUcJBMoq7SFnkAyrVfxMMrBXNJpUEwBfRaL6PbqWdWP+L7YskXvgzRYbE2oaA==
+  dependencies:
+    p-sleep "^1.1.0"
 
 react@18.2.0:
   version "18.2.0"
