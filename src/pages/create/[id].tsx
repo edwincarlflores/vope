@@ -43,6 +43,11 @@ const CreateItemsPage = () => {
           <ItemCard key={id} id={id} name={name} />
         ))}
         <ItemCreator topicId={topicId} />
+        <div className="mt-4 pt-0">
+          <button className="relative w-full rounded-full bg-purple-300 py-2 px-4 font-bold text-white hover:bg-purple-500">
+            Create Topic
+          </button>
+        </div>
       </>
     </Layout>
   );
