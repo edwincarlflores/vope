@@ -12,6 +12,9 @@ export const topicsRouter = t.router({
         where: {
           id: input.id,
         },
+        include: {
+          items: true,
+        },
       });
     }),
   create: t.procedure
