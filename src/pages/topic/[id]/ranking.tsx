@@ -30,7 +30,10 @@ const RankingPage = () => {
           <ItemCard key={id} name={name} />
         ))}
         <div className="mt-4 pt-0">
-          <button className="relative w-full rounded-full bg-purple-300 py-2 px-4 font-bold text-white hover:bg-purple-500">
+          <button
+            onClick={() => router.push(`/topic/${topicId}/vote`)}
+            className="relative w-full rounded-full bg-purple-300 py-2 px-4 font-bold text-white hover:bg-purple-500"
+          >
             Vote
           </button>
         </div>
