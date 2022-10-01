@@ -15,7 +15,10 @@ const RankingPage = () => {
     data: topic,
     isError,
     isLoading,
-  } = trpc.topics.withRankedItems.useQuery({ topicId }, { enabled: !!topicId });
+  } = trpc.topics.topicWithRankedItems.useQuery(
+    { topicId },
+    { enabled: !!topicId }
+  );
 
   return (
     <Layout

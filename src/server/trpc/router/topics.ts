@@ -31,7 +31,7 @@ export const topicsRouter = t.router({
         },
       });
     }),
-  withRankedItems: t.procedure
+  topicWithRankedItems: t.procedure
     .input(z.object({ topicId: z.string() }))
     .query(async ({ ctx, input }) => {
       const topic = await ctx.prisma.topic.findFirst({
